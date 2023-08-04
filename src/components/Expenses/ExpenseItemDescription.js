@@ -1,7 +1,6 @@
 import './ExpenseItemDescription.css'
 
-function ExpenseItemDescription(props) {
-
+const ExpenseItemDescription=(props)=>{
     return (
         <div className='expense-item__description'>
             <h2>{props.title}</h2>
@@ -11,4 +10,6 @@ function ExpenseItemDescription(props) {
     )
 }
 
+
 export default ExpenseItemDescription;
+
