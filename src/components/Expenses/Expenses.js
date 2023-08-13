@@ -2,7 +2,7 @@ import Card from "../UI/Card";
 import './Expenses.css'
 import ExpenseItem from "./ExpenseItem";
 
-const Expenses = () => {
+const Expenses = (props) => {
     const expenses = [
         {
             id: 1,
@@ -31,8 +31,14 @@ const Expenses = () => {
             title: 'Food',
             amount: 500,
             location: 'Kagal'
-        }
+        },
+        
     ]
+
+    if(props.newExpense){
+        expenses.push(props.newExpense)
+    }
+    
 
     const expenseItems = expenses.map((expense) => {
         return <ExpenseItem title={expense.title} date={expense.date} amount={expense.amount} location={expense.location}></ExpenseItem>

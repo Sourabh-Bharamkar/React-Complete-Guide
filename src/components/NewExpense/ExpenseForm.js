@@ -6,6 +6,7 @@ const ExpenseForm=(props)=>{
     const [enteredTitle,setEnteredTitle]=useState('')
     const [enteredAmount,setEnteredAmount]=useState('')
     const [enteredDate,setEnteredDate]=useState('')
+    const [enteredLocation,setEnteredLocation]=useState('')
 
     const titleChangeHandler=(e)=>{
         setEnteredTitle(e.target.value)
@@ -17,13 +18,18 @@ const ExpenseForm=(props)=>{
         setEnteredDate(e.target.value)
     }
 
+    const locationChangeHandler=(e)=>{
+        setEnteredLocation(e.target.value)
+    }
+
 const submitHandler=(e)=>{
     e.preventDefault();
 
     const expenseData={
         title:enteredTitle,
         amount:enteredAmount,
-        date:enteredDate
+        date:new Date(enteredDate),
+        location:enteredLocation
     }
 
     // console.log(expenseData)
@@ -31,6 +37,7 @@ const submitHandler=(e)=>{
     setEnteredAmount('');
     setEnteredTitle('');
     setEnteredDate('');
+    setEnteredLocation('')
 }
 
     return(
@@ -50,6 +57,12 @@ const submitHandler=(e)=>{
                     <label>Date</label>
                     <input type="date" value={enteredDate} onChange={dateChangeHandler}></input>
                 </div>
+
+                <div className="new-expense__control">
+                    <label>Location</label>
+                    <input type="text" value={enteredLocation} onChange={locationChangeHandler}></input>
+                </div>
+
             </div>
             <div className="new-expense__actions">
                 <button type="submit">Add Expense</button>
