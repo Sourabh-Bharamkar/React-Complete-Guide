@@ -1,46 +1,46 @@
 import './ExpenseForm.css';
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
-const ExpenseForm=(props)=>{
+const ExpenseForm = (props) => {
 
-    const [enteredTitle,setEnteredTitle]=useState('')
-    const [enteredAmount,setEnteredAmount]=useState('')
-    const [enteredDate,setEnteredDate]=useState('')
-    const [enteredLocation,setEnteredLocation]=useState('')
+    const [enteredTitle, setEnteredTitle] = useState('')
+    const [enteredAmount, setEnteredAmount] = useState('')
+    const [enteredDate, setEnteredDate] = useState('')
+    const [enteredLocation, setEnteredLocation] = useState('')
 
-    const titleChangeHandler=(e)=>{
+    const titleChangeHandler = (e) => {
         setEnteredTitle(e.target.value)
     }
-    const amountChangeHandler=(e)=>{
+    const amountChangeHandler = (e) => {
         setEnteredAmount(e.target.value)
     }
-    const dateChangeHandler=(e)=>{
+    const dateChangeHandler = (e) => {
         setEnteredDate(e.target.value)
     }
 
-    const locationChangeHandler=(e)=>{
+    const locationChangeHandler = (e) => {
         setEnteredLocation(e.target.value)
     }
 
-const submitHandler=(e)=>{
-    e.preventDefault();
+    const submitHandler = (e) => {
+        e.preventDefault();
 
-    const expenseData={
-        title:enteredTitle,
-        amount:enteredAmount,
-        date:new Date(enteredDate),
-        location:enteredLocation
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate),
+            location: enteredLocation
+        }
+
+        // console.log(expenseData)
+        props.onSaveExpenseData(expenseData);
+        setEnteredAmount('');
+        setEnteredTitle('');
+        setEnteredDate('');
+        setEnteredLocation('')
     }
 
-    // console.log(expenseData)
-    props.onSaveExpenseData(expenseData);
-    setEnteredAmount('');
-    setEnteredTitle('');
-    setEnteredDate('');
-    setEnteredLocation('')
-}
-
-    return(
+    return (
         <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
@@ -64,9 +64,12 @@ const submitHandler=(e)=>{
                 </div>
 
             </div>
+
             <div className="new-expense__actions">
+                <button onClick={props.onCancel}>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
+
         </form>
     )
 }
