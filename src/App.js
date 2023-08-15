@@ -19,14 +19,14 @@ const dummyExpenses = [
     location: 'Kolhapur'
   },
   {
-    id: 2,
+    id: 3,
     date: new Date(2023, 7, 15),
     title: 'Electric Bill',
     amount: 500,
     location: 'Mumbai'
   },
   {
-    id: 2,
+    id: 4,
     date: new Date(2023, 8, 1),
     title: 'Food',
     amount: 500,
